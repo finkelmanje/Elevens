@@ -29,7 +29,7 @@ public class Deck{
    //make a dealCard() method that returns the top card
    
    public void shuffle() {
-   	//use Colletions.shuffle
-   	//reset the top card 
+   	Collections.shuffle(cards);
+   	top = 
    }
 }

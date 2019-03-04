@@ -9,7 +9,7 @@ public class BlackJackCard extends Card
   	//constructors
   	public BlackJackCard( String s, int f)
   	{
-  		super( s, f );
+  		super( s, f ); //goes to card class and calls card constructor
   	}
 
   	//accessors
