@@ -13,26 +13,28 @@ public class Deck{
 
 	public static final int NUMCARDS = 52;
 	public static String[] SUITS = "CLUBS HEARTS DIAMONDS SPADES".split(" ");
+        
+        public static final String FACES[] = {"ZERO","ACE","TWO","THREE","FOUR",
+			"FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"};
 	
 	private List<Card> cards;
 	private int top;
 
-   public Deck(String[] suits, int[] values) {
-   	
+   public Deck() {
+   	cards = new ArrayList<Card>(52);
+       top = 51;
    	//loop through all suits
    		//loop through all faces 1 to 13
    			//add a new TwentyOneCard to the deck
                   
-                      for (int i = 0; i <suits.length; i++) {
-                          for (int k = 0; k < values.length; k++) {
-                          Card card = new Card(suits[i], values[k]);
+                      for (String suit: SUITS) {
+                          for (int i = 0; i < FACES.length; i++ ) {
+                          BlackJackCard card = new BlackJackCard(suit, i);
                           cards.add(card);
                          
                       }  
                       }
-                BlackJackCard bcard = new BlackJackCard()   
-                        cards.add(bcard);
-                        top = cards.size();
+          
    }
    
    public Card dealCard() {

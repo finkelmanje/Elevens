@@ -12,15 +12,17 @@ public class Card
 	//instance variables
 		private String suit;
 		private int face;
+                private String cardRank = "";
 
   	//constructors
 public Card(String s, int a) {
     suit = s;
     face = a;
+    cardRank = FACES[a];
 }
 
 	public void setFace(int a) {
-            face = a;
+            cardRank = FACES[a];
         }
         
         public void setSuit(String s) {
@@ -38,7 +40,7 @@ public Card(String s, int a) {
 
 
   	public String toString() {
-           return  face + " of " + suit; 
+           return  cardRank + " of " + suit; 
         }
 
  }
