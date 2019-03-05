@@ -17,19 +17,37 @@ public class Deck{
 	private List<Card> cards;
 	private int top;
 
-   public Deck()
-   	//refer cards to new ArrayList
-   	top = 51;
+   public Deck(String[] suits, int[] values) {
    	
    	//loop through all suits
    		//loop through all faces 1 to 13
    			//add a new TwentyOneCard to the deck
-
+                  
+                      for (int i = 0; i <suits.length; i++) {
+                          for (int k = 0; k < values.length; k++) {
+                          Card card = new Card(suits[i], values[k]);
+                          cards.add(card);
+                         
+                      }  
+                      }
+                BlackJackCard bcard = new BlackJackCard()   
+                        cards.add(bcard);
+                        top = cards.size();
+   }
    
-   //make a dealCard() method that returns the top card
+   public Card dealCard() {
+       top--;
+       if (top == -1) {
+           return null;
+       }
+           Card c = cards.get(top);
+           return c;
+       }
+       
+  
    
    public void shuffle() {
    	Collections.shuffle(cards);
-   	top = 
+   	top = cards.size();
    }
 }
