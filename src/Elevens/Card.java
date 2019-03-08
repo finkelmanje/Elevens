@@ -18,11 +18,10 @@ public class Card
 public Card(String s, int a) {
     suit = s;
     face = a;
-    cardRank = FACES[a];
 }
 
 	public void setFace(int a) {
-            cardRank = FACES[a];
+            face = a;
         }
         
         public void setSuit(String s) {
@@ -40,7 +39,7 @@ public Card(String s, int a) {
 
 
   	public String toString() {
-           return  cardRank + " of " + suit; 
+           return  FACES[face] + " of " + suit; 
         }
 
  }

@@ -22,20 +22,21 @@ public class Deck{
 
    public Deck() {
    	cards = new ArrayList<Card>(52);
-       top = 51;
+       top = 52;
    	//loop through all suits
    		//loop through all faces 1 to 13
    			//add a new TwentyOneCard to the deck
                   
-                      for (String suit: SUITS) {
-                          for (int i = 0; i < FACES.length; i++ ) {
-                          BlackJackCard card = new BlackJackCard(suit, i);
-                          cards.add(card);
+            for(int suit=0; suit < SUITS.length; suit++){
+              for(int face = 1; face < FACES.length; face++){
+                  cards.add( new BlackJackCard(SUITS[suit],face));
+            }
+        }
+    }
                          
-                      }  
-                      }
+                      
           
-   }
+   
    
    public Card dealCard() {
        top--;
@@ -53,3 +54,4 @@ public class Deck{
    	top = cards.size();
    }
 }
+
