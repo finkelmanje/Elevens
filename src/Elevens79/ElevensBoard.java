@@ -69,6 +69,16 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            //iterate through cards and look for JQK or sum11
+            List<Integer> sc = new ArrayList();
+            for (int i = 0; i < super.size(); i++) {
+                sc.add(new Integer (super.cardAt(i).pointValue()));
+            }
+            
+            if (containsPairSum11(sc) || containsJQK(sc)) {
+                return true;
+            }
+            return false;
 	}
 
 	/**
@@ -81,7 +91,18 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-	}
+            for (int i = 0; i < selectedCards.size(); i++) {
+                for (int k = 0; k < selectedCards.size(); k++) {
+                    if (selectedCards.get(i) + selectedCards.get(k) == 11) {
+                        return true;
+                    }
+            
+                    }
+                }
+            return false;
+            }
+        
+	
 
 	/**
 	 * Check for a JQK in the selected cards.
@@ -93,5 +114,15 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            //check rank
+            int jcount;
+            int qcount;
+            int kcount;
+            
+            for (int i = 0; )
+                
+           if (jcount > 0 && qcount > 0 && kcount > 0) {
+               return true;
+           }
 	}
 }
