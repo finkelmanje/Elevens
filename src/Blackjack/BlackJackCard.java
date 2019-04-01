@@ -28,6 +28,9 @@ public BlackJackCard(int fac, String cardSuit) {
                             if(super.getFace() == 1) {
                                pv = 11; 
                             }
+                            else if (super.getFace() >= 10) {
+                                pv = 10;
+                            }
                             else {
                                 pv = i;
                             }
