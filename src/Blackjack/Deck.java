@@ -18,7 +18,7 @@ public class Deck
 	public static final String SUITS[] = {"CLUBS","SPADES","DIAMONDS","HEARTS"};
 
 	private int topCardIndex;
-	private ArrayList<Card> stackOfCards;
+	private ArrayList<BlackJackCard> stackOfCards;
 
 	public Deck ()
 	{
@@ -28,6 +28,16 @@ public class Deck
 		//loop through suits
 			//loop through faces
 				//add in a new card
+            
+            stackOfCards = new ArrayList<BlackJackCard>(52);
+             topCardIndex = 52;
+
+                  
+            for(int suit = 0; suit < SUITS.length; suit++){
+              for(int face = 1; face < Card.FACES.length; face++){
+                  stackOfCards.add( new BlackJackCard(face, SUITS[suit]));
+            }
+        }
 		
 	}
 
@@ -36,22 +46,30 @@ public class Deck
 	{
 		//shuffle the deck
 		//reset variables as needed
+         
+            Collections.shuffle(stackOfCards);
+   	 topCardIndex = stackOfCards.size();
 	}
 
    //accessors
 	public int  size ()
 	{
-		return 0;
+		return stackOfCards.size();
 	}
 
 	public int numCardsLeft()
 	{
-		return 0;
+		return topCardIndex;
 	}
 
 	public Card nextCard()
 	{
-		return stackOfCards.get(topCardIndex--);
+		topCardIndex--;
+       if (topCardIndex == -1) {
+           return null;
+       }
+           BlackJackCard c = stackOfCards.get(topCardIndex);
+           return c;
 	}
 
 	public String toString()
