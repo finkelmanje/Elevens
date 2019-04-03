@@ -31,9 +31,9 @@ public class CardTestOne
 		Card six = new BlackJackCard(9,"SPADES");
 		out.println(six);				
 
-		out.println(one.equals(two));
-		out.println(one.equals(one));		
-		out.println(four.equals(five));	
-		out.println(three.equals(four));						
+		out.println(one.matches(two));
+		out.println(one.matches(one));		
+		out.println(four.matches(five));	
+		out.println(three.matches(four));						
 	}
 }

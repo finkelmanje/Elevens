@@ -16,6 +16,7 @@ public abstract class Card {
   	//constructors
     public Card() {
         face = 0;
+        suit = "CLUBS";
     }
     
     public Card(int fac, String cardSuit) {
@@ -56,9 +57,14 @@ public abstract class Card {
     
     public abstract int getValue();
 
-    public boolean equals(Object obj) {
-      
-        return false;
+    public boolean matches(Card otherCard) {
+      Boolean match = false;
+      if (otherCard.getSuit().equals(this.getSuit()) && otherCard.getFace() == this.getFace()) {
+          match = true;
+      }
+        return match;
+               
+                
     }
 
   	//toString
