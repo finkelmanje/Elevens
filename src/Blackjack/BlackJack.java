@@ -32,23 +32,26 @@ public class BlackJack
         int playerTotal = player.getHandValue();
         int dealerTotal = dealer.getHandValue();
 
-        out.println("\nPLAYER ");
-        out.println("Hand Value :: " + getPV(player));
-        out.println("Hand Size :: " + player.getHandSize());
-        out.println("Cards in Hand :: " + player.toString());
-        out.println("\nDEALER ");
-        out.println("Hand Value :: " + getPV(dealer));
-        out.println("Hand Size :: " + dealer.getHandSize());
-        out.println("Cards in Hand :: " + dealer.toString());
+        System.out.println("\nPLAYER ");
+        System.out.println("Hand Value :: " + getPV(player));
+        System.out.println("Hand Size :: " + player.getHandSize());
+        System.out.println("Cards in Hand :: " + player.toString());
+        System.out.println("\nDEALER ");
+        System.out.println("Hand Value :: " + getPV(dealer));
+        System.out.println("Hand Size :: " + dealer.getHandSize());
+        System.out.println("Cards in Hand :: " + dealer.toString());
 
         while (playerTotal < 21) {
 
-            out.println("Would you like to hit? (y/n)");
+            System.out.println("Would you like to hit? (y/n)");
             if (getAns(keyboard).equals("y")) {
-                player.addCardToHand(dealer.deal());
+                
+                Card hit = dealer.deal();
+                player.addCardToHand(hit);
                 playerTotal = player.getHandValue();
-                out.println("Hand Value :: " + getPV(player));
-                out.println("Hand Size :: " + player.getHandSize());
+                System.out.println("\nYou were given a " + hit);
+                System.out.println("Hand Value :: " + getPV(player));
+                System.out.println("Hand Size :: " + player.getHandSize());
             } else {
                 break;
             }
@@ -60,27 +63,32 @@ public class BlackJack
         }
 
         if (playerTotal > 21 && dealerTotal <= 21) {
-            out.println("\nDealer wins - Player busted!");
+            System.out.println("\nDealer wins - Player busted!");
         } else if (playerTotal <= 21 && dealerTotal > 21) {
-            out.println("\nPlayer wins - Dealer busted!");
+            System.out.println("\nPlayer wins - Dealer busted!");
         } else if (playerTotal > 21 && dealerTotal > 21) {
-            out.println("Both players bust!");
+            System.out.println("Both players bust!");
         } else if ((playerTotal < dealerTotal)&&!(hasAce(player)&&(playerTotal+10)>=dealerTotal&&playerTotal<=11) ) {
-            out.println("\nDealer has bigger hand value!");
-        } else {
-            out.println("\nPlayer has bigger hand value!");
+            System.out.println("\nDealer has bigger hand value!");
         }
-        out.println("\n"+ playerTotal + "and"+dealerTotal + "\n");
-        out.println("\nPlay Again?");
+            else if (playerTotal == dealerTotal) {
+                    System.out.println("\nThe game is a tie!");
+                    }
+         else {
+            System.out.println("\nPlayer has bigger hand value!");
+        }
+        System.out.println("\n"+ playerTotal + " and "+dealerTotal + "\n");
+        System.out.println("\nPlay Again?");
         if (getAns(keyboard).equals("y")) {
             player.resetHand();
             dealer.resetHand();
             playGame();
 
         }
+        }
 
 
-	}
+	
         
         public String getPV(AbstractPlayer player){
         if(hasAce(player))
@@ -93,7 +101,7 @@ public class BlackJack
         if (ans.equals("y") || ans.equals("n")) {
             return ans;
         }
-        out.println("Invalid Answer");
+        System.out.println("Please type a valid answer");
         ans = getAns(keyboard);
         return ans;
     }
